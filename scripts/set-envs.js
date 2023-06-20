@@ -1,0 +1,12 @@
+const { mkdirSync, writeFileSync } = require('fs')
+require('dotenv').config();
+
+const targetPath = './src/environments/environments.ts';
+const envFileContent = `
+export const environment = {
+  map_box:"${process.env['MAPBOX_KEY']}"
+}
+ `;
+
+mkdirSync('./src/environments', { recursive: true });
+writeFileSync(targetPath, envFileContent);
